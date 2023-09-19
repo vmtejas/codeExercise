@@ -24,33 +24,31 @@ namespace DeveloperSample.ClassRefactoring
 
         public Swallow(SwallowType swallowType)
         {
+            if (!Enum.IsDefined(typeof(SwallowType), swallowType))
+                throw new ArgumentOutOfRangeException(nameof(swallowType), "Invalid swallow type entered.");
+
             Type = swallowType;
+            Load = SwallowLoad.None;
         }
 
         public void ApplyLoad(SwallowLoad load)
         {
+            if (!Enum.IsDefined(typeof(SwallowLoad), load))
+                throw new ArgumentOutOfRangeException(nameof(load), "Invalid load type entered.");
+
             Load = load;
         }
 
         public double GetAirspeedVelocity()
         {
-            if (Type == SwallowType.African && Load == SwallowLoad.None)
+            return (Type, Load) switch
             {
-                return 22;
-            }
-            if (Type == SwallowType.African && Load == SwallowLoad.Coconut)
-            {
-                return 18;
-            }
-            if (Type == SwallowType.European && Load == SwallowLoad.None)
-            {
-                return 20;
-            }
-            if (Type == SwallowType.European && Load == SwallowLoad.Coconut)
-            {
-                return 16;
-            }
-            throw new InvalidOperationException();
+                (SwallowType.African, SwallowLoad.None) => 22.0,
+                (SwallowType.African, SwallowLoad.Coconut) => 18.0,
+                (SwallowType.European, SwallowLoad.None) => 20.0,
+                (SwallowType.European, SwallowLoad.Coconut) => 16.0,
+                _ => throw new InvalidOperationException("Invalid type or load for swallow."),
+            };
         }
     }
 }
