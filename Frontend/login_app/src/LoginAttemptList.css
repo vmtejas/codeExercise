@@ -1,8 +1,15 @@
-.Attempt-List-Main {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 25vw;
-  padding: 0 2em;
+.login-attempt-list {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.login-attempt-item {
+    margin: 10px 0;
+}
+
+.login-attempt-paper {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
 }

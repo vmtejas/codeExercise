@@ -1,16 +1,22 @@
-import React from "react";
-import "./LoginAttemptList.css";
+import React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Paper from '@mui/material/Paper';
+import './LoginAttemptList.css';
 
-const LoginAttempt = (props) => <li {...props}>{props.children}</li>;
-
-const LoginAttemptList = (props) => (
-	<div className="Attempt-List-Main">
-	 	<p>Recent activity</p>
-	  	<input type="input" placeholder="Filter..." />
-		<ul className="Attempt-List">
-			<LoginAttempt>TODO</LoginAttempt>
-		</ul>
-	</div>
-);
+const LoginAttemptList = ({ loginAttempts = [] }) => {
+    return (
+            <List>
+                {loginAttempts.map((attempt, index) => (
+                    <ListItem key={index} className="login-attempt-item">
+                        <Paper elevation={1} className="login-attempt-paper">
+                            <ListItemText primary={attempt.login} />
+                        </Paper>
+                    </ListItem>
+                ))}
+            </List>
+    );
+};
 
 export default LoginAttemptList;
