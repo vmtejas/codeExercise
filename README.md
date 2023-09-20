@@ -1,6 +1,6 @@
 # Code Exercise
 
-# Login Controls Exercise instructions
+# Login Controls Exercise Instructions
 
 Go the the directory with the login_app
 
