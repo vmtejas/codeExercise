@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace DeveloperSample.Algorithms
@@ -15,6 +16,13 @@ namespace DeveloperSample.Algorithms
         {
             Assert.Equal(6, Algorithms.GetFactorial(3));
         }
+
+        [Fact]
+        public void GetFactorialAboveTwele()
+        {
+            Assert.Throws<ArgumentException>(() => Algorithms.GetFactorial(13));
+        }
+
 
         [Fact]
         public void GetFactorialOfZero()
@@ -36,6 +44,12 @@ namespace DeveloperSample.Algorithms
         public void FormatSingleItem()
         {
             Assert.Equal("a", Algorithms.FormatSeparators("a"));
+        }
+
+        [Fact]
+        public void CanFormatSeparatorsWithTwoVars()
+        {
+            Assert.Equal("a and b", Algorithms.FormatSeparators("a", "b"));
         }
     }
 }
